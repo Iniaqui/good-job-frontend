@@ -1,0 +1,43 @@
+@import '../../styles.scss';
+.acceuil{
+  margin-left:20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+    .container{
+      width: 50%;
+
+
+      display: flex;
+      flex-direction: column;
+
+      h1{
+        margin-left: 200px;
+        position: relative;
+
+        margin-top: 20%;
+        width: 448px;
+        @extend  %h1;
+
+      }
+      p{
+        margin-left: 200px ;
+
+        @extend %p;
+        width: 448px;
+      }
+      .div-button{
+        .btn-infos{
+          @extend %button-infos;
+          @extend %p;
+          font-size: 36px;
+          line-height: 44px;
+          margin-left: 200px;
+          width: 448px;
+          height: 90px;
+        }
+      }
+    }
+}
+
