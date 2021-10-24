@@ -1,0 +1,49 @@
+
+@import '../../styles.scss';
+.connexion{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .img-connexion{
+    width: 50%;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .section-connexion{
+    padding-top: 2%;
+    h1{
+      margin-left: 25%;
+      position: relative;
+      width: 50%;
+      text-align: center;
+      @extend  %h1;
+
+    }
+   .form-full-width{
+   width: 50%;
+   margin-top:5%;
+   margin-left: 25%;
+   }
+   .btn-form{
+     width: 50%;
+     margin-left: 25%;
+    margin-top: 5%;
+  }
+   .form-connexion{
+     padding-bottom: 10px;
+    margin-top: 5%;
+    .center{
+      display: inline-block;
+      width: 50%;
+      text-align: center;
+      margin-left: 25%;
+      margin-top:5%;
+
+    }
+
+  }
+  }
+}

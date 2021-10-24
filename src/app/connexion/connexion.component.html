@@ -1,0 +1,31 @@
+
+
+<div class="connexion">
+  <div class="img-connexion">
+    <img src="../../assets/images/img_Connexion.png" alt="Image montrant deux recruteurs cherchant des talents">
+  </div>
+  <div class="section-connexion">
+    <h1>Connexion</h1>
+    <div class="form-connexion">
+      <form (ngSubmit) ="seConnecter()" #f ="ngForm" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre adresse e-mail </mat-label>
+          <input matInput type="text" [formControl] ='emailFormControl' [errorStateMatcher]="matcher">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf ="emailFormControl.hasError('email') && !emailFormControl.hasError('required')"> Veuillez saisir une adresse e-mail valide </mat-error>
+          <mat-error *ngIf ="emailFormControl.hasError('required') ">L'adress e-mail est requise</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre mot de passe</mat-label>
+          <input matInput type="password"  [formControl]= "passwordFormControl" [errorStateMatcher]="matcher">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf ="passwordFormControl.hasError('required') ">Le mot de passe est requis </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color ="primary" class="btn-form">Se connecter</button>
+        <mat-label class="center">OU</mat-label>
+        <button mat-raised-button  class="btn-form">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
