@@ -21,7 +21,8 @@ import {MatButtonModule} from '@angular/material/button';
 
 const appRoutes: Routes =[
 {path:"acceuil", component:DecouvrirComponent},
-{path:"connexion", component:ConnexionComponent}
+{path:"connexion", component:ConnexionComponent},
+{path:"**", component:DecouvrirComponent}
 
 ]
 @NgModule({
