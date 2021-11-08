@@ -15,6 +15,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {HttpClient, HttpClientModule} from  "@angular/common/http";
+import { UserServices } from './services/UserServices';
+import { InscriptionComponent } from './inscription/inscription.component';
+import {MatSelectModule} from '@angular/material/select';
+import { TypeCompanyServices } from './services/TypeCompanyServices';
 
 
 
@@ -22,6 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
 const appRoutes: Routes =[
 {path:"acceuil", component:DecouvrirComponent},
 {path:"connexion", component:ConnexionComponent},
+{path:"inscription", component:InscriptionComponent},
 {path:"**", component:DecouvrirComponent}
 
 ]
@@ -33,6 +39,7 @@ const appRoutes: Routes =[
     DecouvrirComponent,
     FooterComponent,
     ConnexionComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,11 +51,16 @@ const appRoutes: Routes =[
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
+    MatSelectModule
 
 
   ],
-  providers: [],
+  providers: [
+    UserServices,
+    TypeCompanyServices
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,177 @@
+<div class="connexion">
+  <div class="img-connexion">
+    <img src="../../assets/images/img_Connexion.png" alt="Image montrant deux recruteurs cherchant des talents">
+  </div>
+  <!--SECTION DE RENSEIGNEMENT -->
+  <div class="section-connexion" [ngClass] ="profil_user_inscription">
+    <h1>Inscription</h1>
+    <div class="form-connexion">
+      <form (ngSubmit) ="step1()" #userForm ="ngForm" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre adresse e-mail </mat-label>
+          <input matInput type="text" [formControl] ='emailFormControl' [errorStateMatcher]="matcher" [(ngModel)] = "userSaved.mail" name="mail" >
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf ="emailFormControl.hasError('email') && !emailFormControl.hasError('required')"> Veuillez saisir une adresse e-mail valide </mat-error>
+          <mat-error *ngIf ="emailFormControl.hasError('required') ">L'adress e-mail est requise</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre mot de passe</mat-label>
+          <input matInput type="password"  [formControl]= "passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)] = "userSaved.mdp" name="mdp">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf ="passwordFormControl.hasError('required') ">Le mot de passe est requis </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label *ngIf="passwordConfirm == undefined && userSaved.mdp == undefined">Confirmer votre mot de passe</mat-label>
+          <input matInput type="password" [errorStateMatcher]="matcher" [(ngModel)] = "passwordConfirm" name="checkPassword">
+          <mat-hint>Errors appear instantly!</mat-hint>
+         <!-- <mat-error *ngIf ="passwordFormControl.hasError('required') ">Le mot de passe est requis </mat-error>-->
+         <!-- <mat-error *ngIf ="true">Les mots de passe doivent être identiques </mat-error> -->
+          <mat-label  *ngIf ="userSaved.mdp !== passwordConfirm " style="color: red;">Les mots de passe doivent être identiques</mat-label>
+        </mat-form-field>
+        <button mat-raised-button color ="primary" class="btn-form" [disabled]="emailFormControl.invalid || passwordFormControl.invalid || userSaved.mdp !== passwordConfirm ">S'inscrire</button>
+        <mat-label class="center">OU</mat-label>
+      </form>
+      <button mat-raised-button  class="btn-form" routerLink="/connexion" routerLinkActive="active">Se connecter</button>
+    </div>
+  </div>
+<!--SECTION DE RENSEIGNEMENT PROFIL-->
+  <div class="section-connexion" [ngClass]="profil_user">
+    <h1>Ton profil</h1>
+    <div class="form-connexion " >
+      <form (ngSubmit) ="step2()" #userForm ="ngForm" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre adresse (Quartier ) </mat-label>
+          <input matInput type="text" [formControl]= "adressFormControl" required [(ngModel)] = "userSaved.adress" name="adresse" >
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre numero de téléphone </mat-label>
+          <input matInput type="number"  [formControl]= "numberPhoneFormControl" [errorStateMatcher]="matcher" [(ngModel)] = "userSaved.phone" name="phone">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf ="numberPhoneFormControl.hasError('required') ">Le numéro de téléphone est requis  </mat-error>
+          <mat-error *ngIf ="numberPhoneFormControl.hasError('maxLength') ">Le numero de téléphone doit être à 8 chifres </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label >Votre ville</mat-label>
+          <input matInput type="text" required [(ngModel)] = "userSaved.city" name="city">
+         <!-- <mat-error *ngIf ="passwordFormControl.hasError('required') ">Le mot de passe est requis </mat-error>-->
+         <!-- <mat-error *ngIf ="true">Les mots de passe doivent être identiques </mat-error> -->
+        </mat-form-field>
+        <button mat-raised-button color ="primary" class="btn-form" [disabled] ="adressFormControl.invalid || numberPhoneFormControl.invalid || userSaved.city ==''" >Continuer</button>
+        <mat-label class="center">OU</mat-label>
+      </form>
+      <button mat-raised-button  class="btn-form" routerLink="/connexion" routerLinkActive="active">Retour</button>
+    </div>
+  </div>
+
+  <!--SECTION DE RENSEIGNEMENT STATUT -->
+
+  <div class="section-connexion" [ngClass]="profil_choice">
+    <h1>Ton statut</h1>
+    <div class="form-connexion " >
+        <button mat-raised-button color ="primary" class="btn-form" (click)="isCandidat()">A la recherche d'emploi</button>
+        <mat-label class="center">OU</mat-label>
+        <button mat-raised-button color ="primary" class="btn-form" (click)="isRecruiter()">A la recherche de talent </button>
+    </div>
+  </div>
+
+  <!--SECTION DE RENSEIGNEMENT PROFIL CANDIDAT-->
+  <div class="section-connexion" [ngClass]="profil_candidat">
+    <h1>Ton profil</h1>
+    <div class="form-connexion " >
+      <form (ngSubmit) ="saveCandidatStep1()" #userForm ="ngForm" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre nom de famille </mat-label>
+          <input matInput type="text" [formControl]= "nameFormControl" required [(ngModel)] = "candidatSaved.name_candidat" name="name" >
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre prénom  </mat-label>
+          <input matInput type="text"  [formControl]= "nameFormControl" [errorStateMatcher]="matcher" [(ngModel)] = "candidatSaved.firstname_candidat" name="firstname">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf ="nameFormControl.hasError('required') ">Le numéro de téléphone est requis  </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label >Votre date de naissance </mat-label>
+          <input matInput type="date" [formControl]= "birthdayFormControl" [(ngModel)] = "candidatSaved.birthday_candidat" name="city">
+        </mat-form-field>
+        <button mat-raised-button color ="primary" class="btn-form" [disabled] ="nameFormControl.invalid || birthdayFormControl.invalid" >Continuer</button>
+        <mat-label class="center">OU</mat-label>
+      </form>
+      <button mat-raised-button  class="btn-form" routerLink="/connexion" routerLinkActive="active">Retour</button>
+    </div>
+  </div>
+
+    <!--SECTION DE RENSEIGNEMENT PROFIL Sex and Nationality-->
+    <div class="section-connexion" [ngClass]="profil_candidat_fin">
+      <h1>Ton profil</h1>
+      <div class="form-connexion " >
+        <form (ngSubmit) ="saveCandidatStep2()" #userForm ="ngForm" class="form">
+          <mat-form-field class="form-full-width">
+            <mat-label>Vous êtes ......  </mat-label>
+            <mat-select [(ngModel)] ="candidatSaved.sex" required name="sex">
+              <mat-option value="MASCULIN"> Un homme</mat-option>
+              <mat-option value="FEMININ"> Une femme</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-full-width">
+            <mat-label>Votre nationalité</mat-label>
+            <mat-select [(ngModel)] ="candidatSaved.nationality" required name="nationality">
+              <mat-option value="BENIN"> Béninois(e)</mat-option>
+              <mat-option value="TOGO"> Togolais(e)</mat-option>
+              <mat-option value="NIGERIA"> Nigérian(e))</mat-option>
+              <mat-option value="Burkina-Faso"> Burkinabé</mat-option>
+              <mat-option value="Niger"> Nigérien(ne)</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color ="primary" class="btn-form" >Terminer l'inscription</button>
+          <mat-label class="center">OU</mat-label>
+        </form>
+        <button mat-raised-button  class="btn-form" routerLink="/connexion" routerLinkActive="active">Retour</button>
+      </div>
+    </div>
+
+      <!--SECTION DE RENSEIGNEMENT PROFIL RECRUITER-->
+  <div class="section-connexion" [ngClass]="profil_recruiter">
+    <h1>Profil Entreprise </h1>
+    <div class="form-connexion " >
+      <form (ngSubmit) ="saveRecruiterStep1()" #userForm ="ngForm" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Nom et prénom du recruiter </mat-label>
+          <input matInput type="text"  required [(ngModel)] = "recruiterSaved.name_recruiter" name="name" >
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Le nom de la société  </mat-label>
+          <input matInput type="text" required [(ngModel)] = "recruiterSaved.name_company" name="name_company">
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label >Un lien vers votre site (facultatif )</mat-label>
+          <input matInput type="url"  [(ngModel)] = "recruiterSaved.link_description" name="link">
+        </mat-form-field>
+        <button mat-raised-button color ="primary" class="btn-form" [disabled] ="recruiterSaved.name_recruiter=='' || recruiterSaved.name_company==''" >Continuer</button>
+        <mat-label class="center">OU</mat-label>
+      </form>
+      <button mat-raised-button  class="btn-form" routerLink="/connexion" routerLinkActive="active">Retour</button>
+    </div>
+  </div>
+
+        <!--SECTION DE RENSEIGNEMENT PROFIL RECRUITER END -->
+  <div class="section-connexion" [ngClass]="profil_recruiter_end">
+    <h1>Profil Entreprise </h1>
+    <div class="form-connexion " >
+      <form (ngSubmit) ="saveRecruiterStep2()" #userForm ="ngForm" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Votre secteur d'activité : </mat-label>
+          <mat-select [(ngModel)] = "recruiterSaved.id_type_company" name="typecompany">
+            <mat-option *ngFor="let typecompany of typeListCompany" value={{typecompany.id_type_company}}>{{typecompany.name_type_company}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color ="primary" class="btn-form" [disabled] ="recruiterSaved.id_type_company==0" >Terminer l'inscription</button>
+        <mat-label class="center">OU</mat-label>
+      </form>
+      <button mat-raised-button  class="btn-form" routerLink="/connexion" routerLinkActive="active">Retour</button>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

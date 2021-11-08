@@ -30,7 +30,6 @@
       width: 50%;
       margin-top:5%;
       margin-left: 25%;
-
     }
     .btn-form{
       width: 50%;
@@ -48,10 +47,33 @@
         margin-top:5%;
 
       }
+
       background:$mauveFoncé;
       border:2px solid $mauveFoncé;
       border-radius:20px ;
 
     }
+
+  }
+  .profil-user-inscription{
+    display: none;
+  }
+  .profil-user{
+    display: none;
+  }
+  .profil-choice{
+    display: none;
+  }
+  .profil-candidat{
+    display: none;
+  }
+  .profil-candidat-fin{
+    display: none;
+  }
+  .profil-recruiter{
+    display:none;
+  }
+  .profil-recruiter-end{
+    display: none;
   }
 }
