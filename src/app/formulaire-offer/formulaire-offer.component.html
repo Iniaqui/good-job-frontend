@@ -1,0 +1,66 @@
+
+<div class="body_form">
+  <mat-card class="form_offer">
+    <mat-card class="mat-card-form">Formulaire de création d'une offre d'emploi </mat-card>
+
+    <div>
+      <form (ngSubmit) ="saveOffer()" [formGroup]="jobOfferFormGroup" class="form">
+        <mat-form-field class="form-full-width">
+          <mat-label>Titre de l'offre ( Apparaitra dans les recherches ) </mat-label>
+          <input matInput type="text" formControlName="title_offer" name="title_offer">
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Metier </mat-label>
+          <mat-select required formControlName="metier">
+            <mat-option  *ngFor="let metier of listeMetiers" [value]="metier"> {{ metier}}</mat-option>
+            <mat-option value="MASCULIN"> Metier 1</mat-option>
+            <mat-option value="FEMININ">Metier 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Contrat de travail </mat-label>
+          <mat-select required formControlName="contract">
+            <mat-option value="CDI"> CDI</mat-option>
+            <mat-option value="CDD"> CDD </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Niveau de qualification requis </mat-label>
+          <mat-select required name="niveau" formControlName="niveau" name ="niveau">
+            <mat-option value="CEP">CEP</mat-option>
+            <mat-option value="BAC">BAC</mat-option>
+            <mat-option value="BTS">BTS</mat-option>
+            <mat-option value="Licence">Licence</mat-option>
+            <mat-option value="Master">Master</mat-option>
+            <mat-option value="Doctorat">Doctorat</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Salaire proposé ou fourchettes (mensuel)</mat-label>
+          <mat-select formControlName="salaire_offer">
+            <mat-option value="Non notifié">Non notifié</mat-option>
+            <mat-option value="50000 FCFA">50000 FCFA</mat-option>
+            <mat-option value="50000 - 100000 FCFA">50000 - 100000 FCFA</mat-option>
+            <mat-option value="100000-150000 FCFA">100000-150000 FCFA</mat-option>
+            <mat-option value="1500000 FCFA +">1500000 FCFA +</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+          <mat-label>Détails de l'offre ( Elle apprait dans la visualisation de l'offre ) </mat-label>
+          <textarea matInput cols="30" rows="10" placeholder="Ecrivez le details de l'offre ici" formControlName="details" name ="details"></textarea>
+        </mat-form-field>
+
+
+        <button mat-raised-button color ="primary" class="btn-form"  [disabled]="jobOfferFormGroup.invalid">Suivant
+          <mat-icon>navigate_next</mat-icon>
+
+        </button>
+      </form>
+      <button mat-raised-button color ="$mauve" class="btn-form-retour" >
+        <mat-icon>navigate_before</mat-icon>
+        Retour
+      </button>
+    </div>
+  </mat-card>
+</div>
+

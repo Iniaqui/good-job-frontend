@@ -1,0 +1,32 @@
+@import '../../styles.scss';
+.body_form{
+  background-image: linear-gradient(90deg, $mauve,#2874A6 );
+  margin:20px;
+  align-items: center;
+  height: 100%;
+
+  font-family: 'Open Sans';
+  font-weight: bold;
+  .mat-card-form{
+    background-color: $mauve;
+    margin-bottom: 20px;
+  }
+  .form_offer{
+      width: 50%;
+      margin:auto;
+      position: relative;
+      top:10%;
+      .form-full-width{
+        width: 100%;
+        margin-top:10px;
+
+      }
+      .btn-form{
+        position: relative;
+        float : right;
+      }
+
+
+
+  }
+}

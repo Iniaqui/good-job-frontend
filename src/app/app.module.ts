@@ -20,7 +20,13 @@ import { UserServices } from './services/UserServices';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {MatSelectModule} from '@angular/material/select';
 import { TypeCompanyServices } from './services/TypeCompanyServices';
-
+import { BordComponent } from './bord/bord.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import { FormulaireOfferComponent } from './formulaire-offer/formulaire-offer.component';
+import { MetierServices } from './services/metierServices';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -28,6 +34,8 @@ const appRoutes: Routes =[
 {path:"acceuil", component:DecouvrirComponent},
 {path:"connexion", component:ConnexionComponent},
 {path:"inscription", component:InscriptionComponent},
+{path:"bord", component:BordComponent},
+{path:"form_create" , component:FormulaireOfferComponent},
 {path:"**", component:DecouvrirComponent}
 
 ]
@@ -40,6 +48,8 @@ const appRoutes: Routes =[
     FooterComponent,
     ConnexionComponent,
     InscriptionComponent,
+    BordComponent,
+    FormulaireOfferComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,12 +63,17 @@ const appRoutes: Routes =[
     ReactiveFormsModule,
     MatButtonModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatTableModule,
+    MatCardModule
 
 
   ],
   providers: [
     UserServices,
+    MetierServices,
     TypeCompanyServices
   ],
   bootstrap: [AppComponent]

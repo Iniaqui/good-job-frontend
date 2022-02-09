@@ -1,0 +1,62 @@
+<div class="legend">
+  <p>Liste des offres</p>
+  <button mat-flat-button color="primary"  routerLink="/form_create" routerLinkActive="active">Publier une nouvelle offre d'emploi</button>
+</div>
+<div class="list-offer">
+  <table mat-table [dataSource]="dataSourceOffer" class="mat-elevation-z8">
+    <ng-container matColumnDef="id_job_offer">
+      <th mat-header-cell *matHeaderCellDef>Référence </th>
+      <td mat-cell *matCellDef="let offer ">{{ offer.jobOffer.id_job_offer }}</td>
+    </ng-container>
+    <ng-container matColumnDef="title_offer">
+      <th mat-header-cell *matHeaderCellDef>Titre de l'offre </th>
+      <td mat-cell *matCellDef="let offer ">{{ offer.jobOffer.title_offer }}</td>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type de l'offre</th>
+      <td mat-cell *matCellDef="let offer ">{{ offer.type_contract}}</td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date de publication</th>
+      <td mat-cell *matCellDef="let offer ">{{ offer.jobOffer.date_publication_offer }}</td>
+    </ng-container>
+    <ng-container matColumnDef="candidat">
+      <th mat-header-cell *matHeaderCellDef>Nombre de candidature</th>
+      <td mat-cell *matCellDef="let offer ">{{ offer.number_candidat }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let offer " class="action">
+        <ul class="list-actions">
+          <li>
+            <button mat-icon-button title="Détails de l'offre " color="primary" class="btn-form">
+              <mat-icon class="btn-icons">infos</mat-icon>
+            </button>
+          </li>
+          <li>
+            <button mat-icon-button  color="accent" title=" Voir la liste des candidatures"class="btn-form">
+              <mat-icon class="btn-icons">visibility</mat-icon>
+            </button>
+          </li>
+          <li>
+            <button mat-icon-button  title ="Supprimer l'offre"color="warn" class="btn-form">
+              <mat-icon class="btn-icons">delete</mat-icon>
+            </button>
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                  aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+</div>
+
+<app-footer></app-footer>
+

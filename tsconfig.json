@@ -3,6 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    /*"paths": { Permet de résoudre le probnèlmes de tslib  quand tslib est bien télécharger mais que l'erreur persiste
+      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]
+    },*/
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
