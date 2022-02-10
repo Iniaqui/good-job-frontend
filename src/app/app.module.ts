@@ -27,7 +27,8 @@ import {MatTableModule} from '@angular/material/table';
 import { FormulaireOfferComponent } from './formulaire-offer/formulaire-offer.component';
 import { MetierServices } from './services/metierServices';
 import {MatCardModule} from '@angular/material/card';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NavbarModule, WavesModule } from 'angular-bootstrap-md';
 
 
 const appRoutes: Routes =[
@@ -67,10 +68,11 @@ const appRoutes: Routes =[
     MatPaginatorModule,
     MatIconModule,
     MatTableModule,
-    MatCardModule
-
-
-  ],
+    MatCardModule,
+    MDBBootstrapModule.forRoot(),
+    NavbarModule,
+    WavesModule.forRoot()
+    ],
   providers: [
     UserServices,
     MetierServices,
