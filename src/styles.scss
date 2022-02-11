@@ -1,9 +1,8 @@
 $mauve: rgba(220, 173, 215, 0.67);
 $mauveFoncé : rgba(248, 196, 113, 0.2);
-$blue :#6040F7;
+$blue :#6348ED;
 $blueFonce :#2f3640;
 %font{
-  font-family: 'Inter';
   font-style: normal;
   font-weight: bold;
 }
@@ -18,7 +17,7 @@ body{
 %h1{
   @extend %font;
   font-size: 48px;
-  line-height: 58px;
+  line-height: 70px;
 }
 %p{
  @extend %font;
@@ -39,3 +38,19 @@ body{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media screen  and (max-width:700px){
+  %font{
+    font-weight: bold;
+  }
+  %h1{
+    @extend %font;
+    font-size:26px;
+    line-height: 48px;
+  }
+  %p{
+    @extend %font;
+    font-size: 20px;
+
+   }
+}

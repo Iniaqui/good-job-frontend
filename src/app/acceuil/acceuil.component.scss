@@ -28,16 +28,134 @@
         width: 448px;
       }
       .div-button{
-        .btn-infos{
-          @extend %button-infos;
-          @extend %p;
-          font-size: 36px;
-          line-height: 44px;
-          margin-left: 200px;
-          width: 448px;
-          height: 90px;
+        margin-left: 200px;
+        width: 448px;
+        .btn{
+          margin-top:2%;
+          border:1px solid $blueFonce;
+          background:none ;
+          padding: 10px 20px;
+          font-family: "montserrat";
+          cursor:pointer;
+          overflow:hidden;
+          transition:0.8;
+          position: relative;
+
+
+          &.btn-infos{
+            border-radius:20px;
+            width:100%;
+            color:white;
+            font-size: 36px;
+            &::before{
+              bottom:0;
+              border-radius: 50% 50% 0 0;
+              height:180%;
+            }
+            &:hover::before{
+              height:0%
+            }
+            &:hover{
+              color:$blue;
+            }
+          }
+          &:hover{
+            color:white;
+          }
+          &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            z-index: -1;
+            background: $blue;
+            transition:0.8s
+
+          }
         }
       }
     }
+
+}
+
+@media  screen and (max-width: 700px) {
+  .acceuil{
+    display:block;
+    padding: 10px;
+    .img{
+      display:block;
+      width:100%;
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    .container{
+
+
+      width: 100%;
+      h1{
+        margin-left: 2px;
+        position: relative;
+        margin-top: 5%;
+        width: 100%;
+        text-align: center;
+        @extend  %h1;
+      }
+      p{
+        margin-left: 2px;
+        width:100%;
+        text-align: center;
+      }
+      .div-button{
+        margin-left: 5%;
+        width: 90%;
+        .btn{
+          border:1px solid #3498db;
+          background:none ;
+          padding: 10px 20px;
+          font-family: "montserrat";
+          cursor:pointer;
+          overflow:hidden;
+          transition:0.8;
+          position: relative;
+
+
+          &.btn-infos{
+            border-radius:20px;
+            width:100%;
+            color:white;
+            font-size: 26px;
+            &::before{
+              bottom:0;
+              border-radius: 50% 50% 0 0;
+              height:180%;
+            }
+            &:hover::before{
+              height:0%
+            }
+            &:hover{
+              color:$blue;
+            }
+          }
+          &:hover{
+            color:white;
+          }
+          &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            z-index: -1;
+            background: $blue;
+            transition:0.8s
+
+          }
+        }
+      }
+    }
+  }
 }
 
