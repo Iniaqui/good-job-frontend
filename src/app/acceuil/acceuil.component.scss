@@ -109,8 +109,10 @@
         text-align: center;
       }
       .div-button{
-        margin-left: 5%;
-        width: 90%;
+        text-align: center;
+        margin-top:10px;
+        margin-left:25%;
+        width: 50%;
         .btn{
           border:1px solid #3498db;
           background:none ;
@@ -126,7 +128,7 @@
             border-radius:20px;
             width:100%;
             color:white;
-            font-size: 26px;
+            font-size: 14px;
             &::before{
               bottom:0;
               border-radius: 50% 50% 0 0;
