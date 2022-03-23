@@ -25,8 +25,18 @@
         position: relative;
         float : right;
       }
-
-
-
+  }
+  .mat-card-spinner{
+    position:absolute;
+    z-index: 1;
+    padding:10%;
+    width: 40%;
+    left:25%;
+    top:25%;
+    background:none;
+  }
+  .file-input{
+    display:none;
   }
 }
+

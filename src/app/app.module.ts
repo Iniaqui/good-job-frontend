@@ -25,10 +25,21 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import { FormulaireOfferComponent } from './formulaire-offer/formulaire-offer.component';
-import { MetierServices } from './services/metierServices';
+import { MetierServices } from './services/MetierServices';
 import {MatCardModule} from '@angular/material/card';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NavbarModule, WavesModule } from 'angular-bootstrap-md';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import { CompanyServices } from './services/CompayServices';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiTokenInterceptor } from './services/ApiTokenInterceptor';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { FileUploadComponent } from './component/file-upload/file-upload.component';
+
 
 
 const appRoutes: Routes =[
@@ -51,6 +62,7 @@ const appRoutes: Routes =[
     InscriptionComponent,
     BordComponent,
     FormulaireOfferComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,12 +83,22 @@ const appRoutes: Routes =[
     MatCardModule,
     MDBBootstrapModule.forRoot(),
     NavbarModule,
+    MatDatepickerModule,
+    MatProgressSpinnerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatRadioModule,
     WavesModule.forRoot()
     ],
   providers: [
     UserServices,
     MetierServices,
-    TypeCompanyServices
+    TypeCompanyServices,
+    CompanyServices,
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ApiTokenInterceptor, multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

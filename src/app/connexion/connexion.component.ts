@@ -30,9 +30,11 @@ public userConnect = new User();
       //Tentavies de connexion
       this.userServices.login(this.userConnect).subscribe(
         (result)=>{
-
             console.log("User is authenticated ")
             alert("User is authenticated ");
+            //SETTING TOKEN
+            this.userServices.token = <string>result.headers.get("authorization");
+            localStorage.setItem('token',this.userServices.token);
 
       });
 

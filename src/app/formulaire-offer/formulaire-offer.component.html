@@ -1,10 +1,9 @@
-
 <div class="body_form">
   <mat-card class="form_offer">
     <mat-card class="mat-card-form">Formulaire de création d'une offre d'emploi </mat-card>
 
     <div>
-      <form (ngSubmit) ="saveOffer()" [formGroup]="jobOfferFormGroup" class="form">
+      <form (ngSubmit)="saveOffer()" [formGroup]="jobOfferFormGroup" class="form">
         <mat-form-field class="form-full-width">
           <mat-label>Titre de l'offre ( Apparaitra dans les recherches ) </mat-label>
           <input matInput type="text" formControlName="title_offer" name="title_offer">
@@ -12,7 +11,7 @@
         <mat-form-field class="form-full-width">
           <mat-label>Metier </mat-label>
           <mat-select required formControlName="metier">
-            <mat-option  *ngFor="let metier of listeMetiers" [value]="metier"> {{ metier}}</mat-option>
+            <mat-option *ngFor="let metier of listeMetiers" [value]="metier"> {{ metier}}</mat-option>
             <mat-option value="MASCULIN"> Metier 1</mat-option>
             <mat-option value="FEMININ">Metier 2</mat-option>
           </mat-select>
@@ -26,7 +25,7 @@
         </mat-form-field>
         <mat-form-field class="form-full-width">
           <mat-label>Niveau de qualification requis </mat-label>
-          <mat-select required name="niveau" formControlName="niveau" name ="niveau">
+          <mat-select required name="niveau" formControlName="niveau" name="niveau">
             <mat-option value="CEP">CEP</mat-option>
             <mat-option value="BAC">BAC</mat-option>
             <mat-option value="BTS">BTS</mat-option>
@@ -46,21 +45,34 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field class="form-full-width">
-          <mat-label>Détails de l'offre ( Elle apprait dans la visualisation de l'offre ) </mat-label>
-          <textarea matInput cols="30" rows="10" placeholder="Ecrivez le details de l'offre ici" formControlName="details" name ="details"></textarea>
+          <mat-label>Date limite de candidature (A designé ) </mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date_limite_candidature" [min]="minDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-
-
-        <button mat-raised-button color ="primary" class="btn-form"  [disabled]="jobOfferFormGroup.invalid">Suivant
+        <mat-form-field class="form-full-width">
+          <mat-label>Détails de l'offre ( Elle apprait dans la visualisation de l'offre ) </mat-label>
+          <textarea matInput cols="30" rows="10" placeholder="Ecrivez le details de l'offre ici"
+            formControlName="details" name="details"></textarea>
+        </mat-form-field>
+        <div>
+          <mat-label>Télécharger votre offre (format pdf accepté) </mat-label>
+        </div>
+        <button mat-raised-button color="primary" class="btn-form" [disabled]="jobOfferFormGroup.invalid">Suivant
           <mat-icon>navigate_next</mat-icon>
-
         </button>
       </form>
-      <button mat-raised-button color ="$mauve" class="btn-form-retour" >
+      <app-file-upload [requiredFileType]="'application/pdf, text/plain'" (fileUpload)="receiveFile($event) "></app-file-upload>
+      <button mat-raised-button color="$mauve" class="btn-form-retour">
         <mat-icon>navigate_before</mat-icon>
         Retour
       </button>
+      <mat-card *ngIf="spinnerActive" class="mat-card-spinner">
+        <mat-progress-spinner class="spinner" [diameter]="200" [color]="'primary'" [mode]="'indeterminate'"
+          [value]="'75'"></mat-progress-spinner>
+      </mat-card>
+
+
     </div>
   </mat-card>
 </div>
-

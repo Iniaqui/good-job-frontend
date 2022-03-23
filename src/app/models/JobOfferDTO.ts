@@ -13,5 +13,6 @@ export interface JobOfferDTO{
   mail:string,
   city:string,
   phone:string,
-  responseMessage:ResponseMessage
+  responseMessage:ResponseMessage,
+  date_limite_candidature: string;
 }
