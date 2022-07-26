@@ -6,7 +6,6 @@ import { JobOfferDTO } from '../models/JobOfferDTO';
 import { Metier } from '../models/Metier';
 import { Recruiter } from '../models/Recruiter';
 import { TypeContract } from '../models/TypeContract';
-import { User } from '../models/User';
 import { MetierServices } from '../services/MetierServices';
 import { UserServices } from '../services/UserServices';
 import { DatePipe } from '@angular/common'
@@ -27,8 +26,11 @@ export class FormulaireOfferComponent implements OnInit {
   public jobOfferFormGroup !: FormGroup;
   submitted = false;
   spinnerActive: boolean = false;
+  offerIsSaved : boolean = false ;
   minDate: Date;
   fileOffer: File | null;
+  floutage!:string;
+  public resultInfo:String = "Impossible de publier l'offre ";
 
 
   constructor(private metierService: MetierServices, private userServices: UserServices, private companyService: CompanyServices, private formBuilder: FormBuilder, private datePipe: DatePipe) {
@@ -51,6 +53,7 @@ export class FormulaireOfferComponent implements OnInit {
     });
 
   }
+
   /**
    * Effectue les différentes méthode pour la création d'une offre
    */
@@ -70,10 +73,14 @@ export class FormulaireOfferComponent implements OnInit {
       this.companyService.saveNewJobOffer(jobOfferDTO).subscribe(
         (result) => {
           this.activerSpinner(false);
+
+          this.offerIsSaved= true;
+          this.floutage= "floutage";
         },
         (err) => {
           console.log("Conflit sans fichier")
           this.activerSpinner(false);
+          this.resultInfo="Erreur";
           throw new Error(err);
         }
       )
@@ -85,6 +92,8 @@ export class FormulaireOfferComponent implements OnInit {
         this.companyService.saveNewJobOfferWithFile(jobOfferDTO, this.fileOffer).subscribe(
           (result) => {
             this.activerSpinner(false);
+            this.offerIsSaved= true;
+            this.floutage= "floutage";
           },
           (err) => {
             console.log("Conflit")

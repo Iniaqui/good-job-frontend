@@ -1,5 +1,5 @@
 <div class="body_form">
-  <mat-card class="form_offer">
+  <mat-card class="form_offer" [ngClass]="floutage">
     <mat-card class="mat-card-form">Formulaire de création d'une offre d'emploi </mat-card>
 
     <div>
@@ -75,4 +75,8 @@
 
     </div>
   </mat-card>
+  <app-box *ngIf="offerIsSaved"
+  (info)="resultInfo">
+  </app-box>
 </div>
+

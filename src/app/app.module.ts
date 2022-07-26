@@ -39,6 +39,7 @@ import { ApiTokenInterceptor } from './services/ApiTokenInterceptor';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { FileUploadComponent } from './component/file-upload/file-upload.component';
+import { BoxComponent } from './box/box.component';
 
 
 
@@ -63,6 +64,7 @@ const appRoutes: Routes =[
     BordComponent,
     FormulaireOfferComponent,
     FileUploadComponent,
+    BoxComponent,
   ],
   imports: [
     BrowserModule,

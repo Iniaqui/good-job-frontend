@@ -1,9 +1,9 @@
 @import '../../styles.scss';
 .body_form{
   background-image: linear-gradient(90deg, $mauve,#2874A6 );
-  margin:20px;
+  height:100%;
   align-items: center;
-  height: 100%;
+
 
   font-family: 'Open Sans';
   font-weight: bold;
@@ -12,13 +12,14 @@
     margin-bottom: 20px;
   }
   .form_offer{
+
       width: 50%;
       margin:auto;
       position: relative;
       top:10%;
       .form-full-width{
         width: 100%;
-        margin-top:10px;
+
 
       }
       .btn-form{
@@ -38,5 +39,9 @@
   .file-input{
     display:none;
   }
+  .floutage{
+    filter: blur(4px);
+  }
+
 }
 
