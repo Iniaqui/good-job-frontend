@@ -5,7 +5,7 @@
     <i class="menu-toggle-btn fas fa-bars" (click)="displayMenu()"></i>
     <nav class="navigation-menu" [ngClass]="menuEvent">
       <a href="#"><i class="fas fa-home home"></i>Acceuil</a>
-      <a href="#"><i class="fab fa-buffer works "></i>Offres</a>
+      <a href="#" routerLink="/offers"><i class="fab fa-buffer works "></i>Offres</a>
       <a href="#" routerLink="/connexion" routerLinkActive="active"><i class=" fas fa-user user "></i>Connexion</a>
       <a href="#" routerLink="/form_create"><i class="fa-solid fa-paper-plane offer"></i>Poster une offre</a>
     </nav>

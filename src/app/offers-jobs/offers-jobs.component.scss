@@ -1,0 +1,18 @@
+@import '../../styles.scss';
+.offer-job{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+  
+    .list-box-offer{
+      box-shadow: 0px 0px 2px 2px rgba($blue,0.2);
+      padding:5px;;
+      margin-right: 10px;
+      width: 50%;
+    }
+  
+    .app-detail-box-offer{
+        width: 50%;
+        height: 90vh;
+    }
+}

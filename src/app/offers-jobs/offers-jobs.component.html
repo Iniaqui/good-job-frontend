@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class="offer-job">
+  <div class="list-box-offer">
+    <app-box-offer
+      *ngFor="let offer of listeDeOffres"
+      [offer]="offer"
+      class="app-box-offer"
+    ></app-box-offer>
+    <mat-card *ngIf="spinnerActive" class="mat-card-spinner">
+      <mat-progress-spinner
+        class="spinner"
+        [diameter]="50"
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="'75'"
+      ></mat-progress-spinner>
+      <h3>Un instant s'il vous plait</h3>
+    </mat-card>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+  <app-details-box-offer
+    class="app-detail-box-offer"
+    [jobOfferDTO]="listeDeOffres[0]"
+  ></app-details-box-offer>
+</div>

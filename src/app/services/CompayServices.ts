@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CompanyDTO } from "../models/CompanyDTO";
+import { JobOfferCompanyDomains } from "../models/JobOfferCompanyDomains";
 import { JobOfferDTO } from "../models/JobOfferDTO";
 import { ApiServices } from "./ApiServices";
 
@@ -71,5 +72,4 @@ export class CompanyServices extends ApiServices {
     let params = new HttpParams();
     return this.httpClient.post<JobOfferDTO>(this.host+"/jobOffer/admin/create", formData, this.httpOptions)
   }
-
 }

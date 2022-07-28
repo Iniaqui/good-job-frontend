@@ -1,0 +1,51 @@
+<mat-card class="mat-card-offer">
+    <div class="offer">
+      <div class="infos" *ngIf="jobOfferDTO != null">
+        <mat-card class="mat-card-offer">
+          <div class="offer">
+            <div class="img">
+              <img src="../../../assets/images/imageMoov.png" alt="" />
+            </div>
+            <div class="infos">
+              <h3 class="title">{{jobOfferDTO.title_offer}}</h3>
+              <p class="name_company">{{jobOfferDTO.name_company}}</p>
+              <button>Candidatez</button>
+            </div>
+          </div>
+        </mat-card>
+        <div>
+          <div class="detailPoste">
+            <h2>Détail du poste</h2>
+            <div class="salaire">
+              <p class="title">Salaire</p>
+              <p>{{jobOfferDTO.salaire_offer}}</p>
+            </div>
+            <div class="typeContrat">
+              <p class="title">Type de contrat</p>
+              <p>{{jobOfferDTO.contract}}</p>
+            </div>
+            <div class="salaire">
+              <p class="title">Salaire</p>
+              <p>{{jobOfferDTO.salaire_offer}}</p>
+            </div>
+            <div class="dateLimiteCandiature">
+              <p class="title">Date limite de candidature</p>
+              <p>{{jobOfferDTO.date_limite_candidature}}</p>
+            </div>
+            <div class="mail">
+              <p class="title">Mail de candidature</p>
+              <p>{{jobOfferDTO.mail}}</p>
+            </div>
+          </div>
+          <div class="descriptionPoste">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+               Reiciendis commodi assumenda neque similique labore, deleniti harum?
+                A nihil numquam culpa sit eius, architecto temporibus voluptates, 
+                reiciendis, optio animi molestiae. Eos.
+            </p>
+          </div>
+     
+        </div>
+      </div >
+    </div>
+  </mat-card>

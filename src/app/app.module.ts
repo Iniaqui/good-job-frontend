@@ -11,47 +11,58 @@ import { FooterComponent } from './footer/footer.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {HttpClient, HttpClientModule} from  "@angular/common/http";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserServices } from './services/UserServices';
 import { InscriptionComponent } from './inscription/inscription.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { TypeCompanyServices } from './services/TypeCompanyServices';
 import { BordComponent } from './bord/bord.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { FormulaireOfferComponent } from './formulaire-offer/formulaire-offer.component';
 import { MetierServices } from './services/MetierServices';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NavbarModule, WavesModule } from 'angular-bootstrap-md';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { CompanyServices } from './services/CompayServices';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiTokenInterceptor } from './services/ApiTokenInterceptor';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FileUploadComponent } from './component/file-upload/file-upload.component';
 import { BoxComponent } from './box/box.component';
+import { OffersJobsComponent } from './offers-jobs/offers-jobs.component';
+import { BoxOfferComponent } from './offers-jobs/box-offer/box-offer.component';
+import { DetailsBoxOfferComponent } from './offers-jobs/details-box-offer/details-box-offer.component';
+import { OfferServices } from './services/OfferServices';
 
-
-
-const appRoutes: Routes =[
-{path:"acceuil", component:DecouvrirComponent},
-{path:"connexion", component:ConnexionComponent},
-{path:"inscription", component:InscriptionComponent},
-{path:"bord", component:BordComponent},
-{path:"form_create" , component:FormulaireOfferComponent},
-{path:"**", component:DecouvrirComponent}
-
-]
+const appRoutes: Routes = [
+  { path: 'acceuil', component: DecouvrirComponent },
+  { path: 'connexion', component: ConnexionComponent },
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'bord', component: BordComponent },
+  { path: 'form_create', component: FormulaireOfferComponent },
+  {
+    path: 'offers',
+    component: OffersJobsComponent,
+    children: [
+      {
+        path: 'details',
+        component: DetailsBoxOfferComponent,
+      },
+    ],
+  },
+  { path: '**', component: DecouvrirComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +76,9 @@ const appRoutes: Routes =[
     FormulaireOfferComponent,
     FileUploadComponent,
     BoxComponent,
+    OffersJobsComponent,
+    BoxOfferComponent,
+    DetailsBoxOfferComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,18 +104,21 @@ const appRoutes: Routes =[
     MatNativeDateModule,
     MatProgressBarModule,
     MatRadioModule,
-    WavesModule.forRoot()
-    ],
+    WavesModule.forRoot(),
+  ],
   providers: [
     UserServices,
     MetierServices,
     TypeCompanyServices,
     CompanyServices,
+    OfferServices,
     DatePipe,
     {
-      provide: HTTP_INTERCEPTORS, useClass: ApiTokenInterceptor, multi:true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiTokenInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
